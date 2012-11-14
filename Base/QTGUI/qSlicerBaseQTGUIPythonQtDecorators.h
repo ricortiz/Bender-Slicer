@@ -16,8 +16,12 @@
 // PythonQt includes
 #include <PythonQt.h>
 
+#include "vtkSlicerConfigure.h" // For Slicer_USE_QtTesting
+
 // CTK QtTesting includes
+#ifdef Slicer_USE_QtTesting
 #include <ctkQtTestingUtility.h>
+#endif
 
 // SlicerQt includes
 #include "qSlicerAbstractModuleRepresentation.h"
@@ -47,7 +51,9 @@ public:
     PythonQt::self()->registerClass(&qSlicerAbstractModuleWidget::staticMetaObject);
     PythonQt::self()->registerClass(&qSlicerPythonManager::staticMetaObject);
     PythonQt::self()->registerClass(&qSlicerCommandOptions::staticMetaObject);
+#ifdef Slicer_USE_QtTesting
     PythonQt::self()->registerClass(&ctkQtTestingUtility::staticMetaObject);
+#endif
     // Note: Use registerCPPClassForPythonQt to register pure Cpp classes
     }
 
