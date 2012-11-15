@@ -17,16 +17,20 @@ set(qtmodules
   #FiberBundles
   SceneViews
   SlicerWelcome
-  TractographyDisplay
   Reformat
   ViewControllers
   Volumes
-  TractographyFiducialSeeding # tractography depends of Volumes
   VolumeRendering # Volume Rendering depends of Volumes
   )
 if(Slicer_BUILD_CLI_SUPPORT)
   list(APPEND qtmodules
     CropVolume
+    )
+endif()
+if(Slicer_BUILD_DIFFUSION_SUPPORT)
+  list(APPEND qtmodules
+    TractographyDisplay
+    TractographyFiducialSeeding # tractography depends of Volumes
     )
 endif()
 
